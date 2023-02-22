@@ -13,11 +13,11 @@ int main(void)
 
 	for (counter = 0; counter < 50; counter++)
 	{
-		printf("%li, %li, ", a, b);
+		printf("%li %li", a, b);
 		a += b;
 		b += a;
 
-	if (counter== 49)
+	if (counter == 49)
 		printf("\n");
 	else
 		printf(", ");
