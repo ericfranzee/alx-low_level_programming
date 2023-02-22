@@ -8,7 +8,6 @@
 int main(void)
 {
 	int counter;
-	//int countto = 50;
 	long a = 0;
 	long b = 1;
 
