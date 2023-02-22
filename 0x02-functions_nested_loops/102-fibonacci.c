@@ -9,19 +9,19 @@ int main(void)
 {
 	int counter;
 	int countto = 50;
-	long a = 1;
-	long b = 2;
+	long a = 0;
+	long b = 1;
 
-	for (counter = 1; counter <= (countto / 2); counter++)
+	for (counter = 0; counter < 50; counter++)
 	{
 		printf("%li, %li, ", a, b);
 		a += b;
 		b += a;
-	}
-	if (countto % 2 == 1)
-		printf("%liooo", a);
 
-	printf("\n");
-
+	if (counter== 49)
+		printf("\n");
+	else
+		printf(", ")
+}
 	return (0);
 }
