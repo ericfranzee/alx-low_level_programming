@@ -8,7 +8,7 @@
 int main(void)
 {
 	int counter;
-	int countto = 50;
+	//int countto = 50;
 	long a = 0;
 	long b = 1;
 
@@ -21,7 +21,7 @@ int main(void)
 	if (counter== 49)
 		printf("\n");
 	else
-		printf(", ")
+		printf(", ");
 }
 	return (0);
 }
