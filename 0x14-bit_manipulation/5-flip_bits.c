@@ -9,18 +9,18 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int different_bits = 0;
-	unsigned long int difference_bits;
+	unsigned int diff_bits = 0;
+	unsigned long int difference;
 
-	/* For both numbers to show bit 1 if different bits */
-	difference_bits = n ^ m;
+	/* Xor both nums to show bit 1 if different bits */
+	difference = n ^ m;
 
-	/* keep shifting difference_bits to right and tallying the ones up */
-	do
-	{
-		different_bits += (difference_bits & 1);
-		difference_bits >>= 1;
-	} while (difference_bits > 0);
+	/* keep shifting difference to right and tallying the ones up */
+	do {
+		diff_bits += (difference & 1);
+		difference >>= 1;
+	} while
+		(difference > 0);
 
-	return (different_bits);
+	return (diff_bits);
 }
