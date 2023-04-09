@@ -7,30 +7,31 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int ui;
-	int string_lenght, base_2;
 
-	if (!b)
-		return (0);
+	int len = 0, i;
+	unsigned int sum = 0;
 
-	ui = 0;
+	if (b == NULL)
+		return (sum);
 
-	for (string_lenght = 0; b[string_lenght] != '\0'; string_lenght++)
-		;
+	/* find string length */
+	while (b[len] != '\0')
+		len++;
+	len -= 1;
 
-	for (string_lenght--, base_2 = 1; string_lenght >= 0;
-		 string_lenght--, base_2 *= 2)
+	/* iterate string and if '1' then multiply by power of 2 */
+	/* get power of 2 via binary (e.g. 1<<2 = 100 in binary = 4) */
+	i = 0;
+	while (b[i])
 	{
-		if (b[string_lenght] != '0' && b[string_lenght] != '1')
-		{
-			return (0);
-		}
+		if ((b[i] != '0') && (b[i] != '1'))
+			return (sum);
 
-		if (b[string_lenght] & 1)
-		{
-			ui += base_2;
-		}
+		if (b[i] == '1')
+			sum += (1 * (1 << len));
+		i++;
+		len--;
 	}
 
-	return (ui);
+	return (sum);
 }
