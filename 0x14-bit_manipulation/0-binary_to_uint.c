@@ -8,7 +8,7 @@
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int ui;
-	int string_lenght, base_2;
+	int string_lenght, base_two;
 
 	if (!b)
 		return (0);
@@ -18,8 +18,7 @@ unsigned int binary_to_uint(const char *b)
 	for (string_lenght = 0; b[string_lenght] != '\0'; string_lenght++)
 		;
 
-	for (string_lenght--, base_2 = 1; string_lenght >= 0;
-		string_lenght--, base_2 *= 2)
+	for (string_lenght--, base_two = 1; string_lenght >= 0; string_lenght--, base_two *= 2)
 	{
 		if (b[string_lenght] != '0' && b[string_lenght] != '1')
 		{
@@ -28,7 +27,7 @@ unsigned int binary_to_uint(const char *b)
 
 		if (b[string_lenght] & 1)
 		{
-			ui += base_2;
+			ui += base_two;
 		}
 	}
 
