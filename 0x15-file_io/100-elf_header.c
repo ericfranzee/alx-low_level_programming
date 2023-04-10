@@ -3,9 +3,9 @@
 #define REV(n) ((n << 24) | (((n >> 16) << 24) >> 16) | \
 (((n << 16) >> 24) << 16) | (n >> 24))
 /**
-* verify- verify the file to check if is a ELF
-* @e_ident: the ELF struct
-* return: no return is a void func.
+* verify- verify the file to check if is a ELF works and exist
+* @e_ident: the ELF structure
+* return: no return is a void function.
 */
 
 void verify(unsigned char *e_ident)
@@ -17,7 +17,7 @@ void verify(unsigned char *e_ident)
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "Error: this file not is a valid ELF\n");
+		dprintf(STDERR_FILENO, "Error: this file not is a valid ELF file\n");
 		exit(98);
 	}
 }
@@ -30,7 +30,7 @@ void verify(unsigned char *e_ident)
 
 void magic(unsigned char *e_ident)
 {
-	int i; /* the index to count the magic bytes */
+	int i; /* index to count the magic bytes */
 	int limit;
 
 	limit = EI_NIDENT - 1;
@@ -60,7 +60,7 @@ void class(unsigned char *e_ident)
 }
 
 /**
-* data - print mthe type of data
+* data - print an mthe type of data
 * @e_ident: the ELF struct
 * return: no return is a void func.
 */
@@ -79,7 +79,7 @@ void data(unsigned char *e_ident)
 }
 
 /**
-* version - print the version of the file
+* version - print the version of a file
 * @e_ident: the ELF struct
 * return: no return is a void func.
 */
@@ -126,7 +126,7 @@ void osabi(unsigned char *e_ident)
 }
 
 /**
-* type - print the type
+* type - print the type of the file.
 * @e_ident: the ELF struct
 * @e_type: data to compare and print.
 * return: no return is a void func.
@@ -188,14 +188,14 @@ int main(int argc, char *argv[])
 	fd = open(*(argv + 1), O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", *(argv + 1));
+		dprintf(STDERR_FILENO, "Error: Can't read from this file %s\n", *(argv + 1));
 		exit(98);
 	}
 	_read = read(fd, file, sizeof(Elf64_Ehdr));
 	if (_read == -1)
 	{
 		free(file);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", *(argv + 1));
+		dprintf(STDERR_FILENO, "Error: Can't read from this file %s\n", *(argv + 1));
 		exit(98);
 	}
 	verify(file->e_ident);
