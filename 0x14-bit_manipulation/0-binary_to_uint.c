@@ -3,46 +3,36 @@
 #include <stdio.h>
 
 /**
-* _strlen - find the length of a string
-* @s: pointer to the string to check
-* Return: void
-*/
-
-
-int _strlen(const char *s)
-{
-int i = 0;
-while (s[i])
-	i++;
-
-return (i);
-}
-
-
-/**
-* binary_to_uint - converts a binary number to an unsigned int
-* @b: binary number
-*
-* Return: 0 or converted number
-*/
-
+ * binary_to_uint - to convert a binary number to an
+ * unsigned int.
+ * @b: binary number.
+ * Return: unsigned int.
+ */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int n = 0;
-	int i, len;
+	unsigned int ui;
+	int str_len, base_two;
 
-	if (b == NULL)
+	if (!b)
 		return (0);
 
-	len = _strlen(b);
+	ui = 0;
 
-	for (i = 0; i != len; i++)
+	for (str_len = 0; b[str_len] != '\0'; str_len++)
+		;
+
+	for (str_len--, base_two = 1; str_len >= 0; str_len--, base_two *= 2)
 	{
-		if (b[len - i - 1] == '1')
-			n += 1 << i;
-		else if (b[len - i - 1] != '0')
+		if (b[str_len] != '0' && b[str_len] != '1')
+		{
 			return (0);
+		}
+
+		if (b[str_len] & 1)
+		{
+			ui += base_two;
+		}
 	}
 
-	return (n);
+	return (ui);
 }
